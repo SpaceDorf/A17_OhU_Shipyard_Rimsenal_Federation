@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingDefs>  
+  <!--=============== Cheetah ===============-->
+
+
+  <ThingDef ParentName="BaseShip">
+    <thingClass>OHUShips.ShipBase</thingClass>
+    <defName>TE_Zephyr</defName>
+    <label>Zephyr</label>
+    <description> It's an oblique wing medium size transport and can house 8 people -/+ 1500kg and is medium range 1750 fuel tank capacity fast but quite heavy on the controls. 
+	the wing rotates at high speed to have less resistance from the air hence higher speeds and less fuel consumption. 
+
+WorldMapTravelSpeedFactor: 0.25
+Range: 
+Fuel Capacity: 600
+Fuel Consumption: 0.6
+Maximum Cargo Capacity: 250 kg 
+Defensive Capabilities: 2 Light Weapons 
+HP 800 
+	</description>
+
+ 
+	
+	<graphicData>
+      <texPath>Things/Ships/TE_Ships/TE_Zephyr</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(10,11)</drawSize>
+    </graphicData>
+	
+
+	<size>(10,3)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <passability>Impassable</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1.0</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <iconDrawScale>1</iconDrawScale>
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <WorkToBuild>25000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+      <Mass>6000</Mass>	 	  
+    </statBases>
+    
+	
+	<comps>
+      <li Class="OHUShips.CompProperties_Ship">
+    
+		<TicksToImpact>600</TicksToImpact>
+        <TicksToDespawn>300</TicksToDespawn>
+        
+
+		<WorldMapTravelSpeedFactor>1.1</WorldMapTravelSpeedFactor>
+        <maxCargo>1500</maxCargo>
+        <maxPassengers>8</maxPassengers>
+        <CanBeStartingShip>true</CanBeStartingShip>
+        <availableToFactions>
+		<li>Outlander</li>
+	    </availableToFactions>
+		
+		
+
+        <LeavingShipDef>TE_Zephyr_Leaving</LeavingShipDef>
+        <IncomingAngle>65</IncomingAngle>
+        <ShadowGraphicPath>Things/Ships/TE_Ships/TE_Zephyr_Shadow</ShadowGraphicPath>
+        <FleetIconGraphicPath>Things/Ships/TE_Ships/TE_Zephyr_FleetIcon</FleetIconGraphicPath>
+		
+
+		<!-- turretoffset = pos x east, z ??? ,  pos y north  -->
+		<!--
+        <weaponSlots>
+		<li>
+          <SlotName>Left Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(2,0,1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+	
+	
+		<li>
+          <SlotName>Right Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(2,0,-1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+
+  
+	   </weaponSlots> -->
+
+	 </li>
+	 
+
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>5.0</fuelConsumptionRate>
+        <fuelCapacity>1750.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showFuelGizmo>true</showFuelGizmo>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <autoRefuelPercent>1.00</autoRefuelPercent>
+      </li>
+    </comps>
+	
+    <costList>
+      <Steel>900</Steel>
+      <Plasteel>300</Plasteel>
+      <Component>35</Component>
+    </costList>
+		<researchPrerequisites>
+			<li>DefenceTech</li>
+			<li>ShipBasics</li>
+		    <li>TE_SpaceCraft</li>
+		</researchPrerequisites>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>RGBA(1.00,1.00,1.00,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+  </ThingDef>
+
+
+  <ThingDef>
+    <defName>TE_Zephyr_Leaving</defName>
+    <label>Zephyr(leaving)</label>
+    <category>Skyfaller</category>
+		<thingClass>OHUShips.ShipBase_Traveling</thingClass>
+		<tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>1.9</drawSize>
+    </graphicData>
+    <altitudeLayer>FlyingItem</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <selectable>false</selectable>
+  </ThingDef>  
+  
+</ThingDefs>

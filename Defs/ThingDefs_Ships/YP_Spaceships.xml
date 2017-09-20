@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingDefs>  
+  <!--=============== Wyvern ===============-->
+
+
+  <ThingDef ParentName="BaseShip">
+    <thingClass>OHUShips.ShipBase</thingClass>
+    <defName>YP_Wyvern</defName>
+    <label>Wyvern</label>
+    <description>Built and designed by Yunhwa Precision, The Wyvern is the pinnacle of fighter spaceplane technology, light, fast and maneuverable due to the combination of one Hayabusa H-16 'Hexaka' Turbofan fitted with vectored thrust  and a pair of RollsBlunt RB-850 linear Aerospike Rocket motors for orbital flight.
+
+Because of the Wyverns unique Turbofan sound and the fearsome effect of it’s four Shard Blasters against soft targets enemy forces nicknamed it “The Lawnmower”.
+
+
+WorldMapTravelSpeedFactor: 1.25 ( in hex per second or game hour ? )
+Range: 30-35
+Fuel Capacity: 500
+Fuel Consumption: 0.6 
+Maximum Cargo Capacity: 200 kg
+Defensive Capabilities: 4 Light Weapons 
+
+
+Cost 750steel, 10 comps 75 plasteel 
+
+	</description>
+  
+ 
+	
+	<graphicData>
+      <texPath>Things/Ships/YP_Ships/YP_Wyvern</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+	
+
+	<size>(5,2)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <passability>Impassable</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1.0</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <iconDrawScale>1</iconDrawScale>
+    <statBases>
+      <MaxHitPoints>750</MaxHitPoints>
+      <WorkToBuild>120000</WorkToBuild>
+      <Flammability>0.25</Flammability>
+      <Mass>7500</Mass>	 	  
+    </statBases>
+    
+	
+	<comps>
+      <li Class="OHUShips.CompProperties_Ship">
+    
+		<TicksToImpact>600</TicksToImpact>
+        <TicksToDespawn>300</TicksToDespawn>
+        
+
+		<WorldMapTravelSpeedFactor>1.5</WorldMapTravelSpeedFactor>
+        <maxCargo>200</maxCargo>
+        <maxPassengers>2</maxPassengers>
+        <CanBeStartingShip>true</CanBeStartingShip>
+        <availableToFactions>
+		<!-- <li>Outlander</li> -->
+	    </availableToFactions>
+		
+		
+
+        <LeavingShipDef>YP_Wyvern_Leaving</LeavingShipDef>
+        <IncomingAngle>65</IncomingAngle>
+        <ShadowGraphicPath>Things/Ships/YP_Ships/YP_Wyvern_Shadow</ShadowGraphicPath>
+        <FleetIconGraphicPath>Things/Ships/GD_Ships/YP_Wyvern_FleetIcon</FleetIconGraphicPath>
+		
+
+		<!-- turretoffset = pos x east, z ??? ,  pos y north  -->
+		<!-- port - left; starboard - right -->
+		
+		
+        <weaponSlots>
+		
+		<li>
+          <SlotName>Outer Port Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(0,0,2)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+		<li>
+          <SlotName>Inner Port Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(0,0,1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+	
+	
+		<li>
+          <SlotName>Inner Starboard Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(0,0,-1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+		<li>
+          <SlotName>Outer Starboard Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(0,0,-2)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+  
+	   </weaponSlots>
+
+	 </li>
+	 
+
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>6.0</fuelConsumptionRate>
+        <fuelCapacity>500.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showFuelGizmo>true</showFuelGizmo>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>400</initialConfigurableTargetFuelLevel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <autoRefuelPercent>1.00</autoRefuelPercent>
+      </li>
+    </comps>
+	
+    <costList>  
+      <Steel>800</Steel>
+      <Plasteel>200</Plasteel>
+      <Component>30</Component>
+    </costList>
+		<researchPrerequisites>
+			<li>DefenceTech</li>
+			<li>ShipBasics</li>
+		    <li>YP_SpaceCraft</li>
+		</researchPrerequisites>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>RGBA(1.00,1.00,1.00,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+  </ThingDef>
+
+
+  <ThingDef>
+    <defName>YP_Wyvern_Leaving</defName>
+    <label>Wyvern(leaving)</label>
+    <category>Skyfaller</category>
+		<thingClass>OHUShips.ShipBase_Traveling</thingClass>
+		<tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>1.9</drawSize>
+    </graphicData>
+    <altitudeLayer>FlyingItem</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <selectable>false</selectable>
+  </ThingDef>  
+  
+</ThingDefs>
