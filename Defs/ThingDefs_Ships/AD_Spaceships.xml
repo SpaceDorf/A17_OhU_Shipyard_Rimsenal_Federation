@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingDefs>  
+  <!--=============== Cheetah ===============-->
+
+
+  <ThingDef ParentName="BaseShip">
+    <thingClass>OHUShips.ShipBase</thingClass>
+    <defName>GD_Cheetah</defName>
+    <label>Cheetah</label>
+    <description>The fast ground support craft manufactured by Greydale Defense. Strike Hard. Strike Fast. 
+
+WorldMapTravelSpeedFactor: 0.25
+Range: 
+Fuel Capacity: 600
+Fuel Consumption: 0.6
+Maximum Cargo Capacity: 250 kg 
+Defensive Capabilities: 2 Light Weapons 
+HP 800 
+	</description>
+
+ 
+	
+	<graphicData>
+      <texPath>Things/Ships/GD_Ships/GD_Cheetah</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+	
+
+	<size>(5,2)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <passability>Impassable</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1.0</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <iconDrawScale>1</iconDrawScale>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+      <Mass>6000</Mass>	 	  
+    </statBases>
+    
+	
+	<comps>
+      <li Class="OHUShips.CompProperties_Ship">
+    
+		<TicksToImpact>600</TicksToImpact>
+        <TicksToDespawn>300</TicksToDespawn>
+        
+
+		<WorldMapTravelSpeedFactor>1</WorldMapTravelSpeedFactor>
+        <maxCargo>250</maxCargo>
+        <maxPassengers>2</maxPassengers>
+        <CanBeStartingShip>true</CanBeStartingShip>
+        <availableToFactions>
+		<li>Outlander</li>
+	    </availableToFactions>
+		
+		
+
+        <LeavingShipDef>GD_Cheetah_Leaving</LeavingShipDef>
+        <IncomingAngle>65</IncomingAngle>
+        <ShadowGraphicPath>Things/Ships/GD_Ships/GD_Cheetah_Shadow</ShadowGraphicPath>
+        <FleetIconGraphicPath>Things/Ships/GD_Ships/GD_Cheetah_FleetIcon</FleetIconGraphicPath>
+		
+
+		<!-- turretoffset = pos x east, z ??? ,  pos y north  -->
+		
+        <weaponSlots>
+		<li>
+          <SlotName>Port Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(2,0,1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+	
+	
+		<li>
+          <SlotName>Starboard Gun</SlotName>
+          <slotType>LightCaliber</slotType>
+          <turretPosOffset>(2,0,-1)</turretPosOffset>
+          <turretMinSize>(1,1)</turretMinSize>
+	    </li>
+
+  
+	   </weaponSlots>
+
+	 </li>
+	 
+
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>7.0</fuelConsumptionRate>
+        <fuelCapacity>800.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showFuelGizmo>true</showFuelGizmo>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>600</initialConfigurableTargetFuelLevel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <autoRefuelPercent>1.00</autoRefuelPercent>
+      </li>
+    </comps>
+	
+    <costList>
+      <Steel>800</Steel>
+      <Plasteel>200</Plasteel>
+      <Component>30</Component>
+    </costList>
+		<researchPrerequisites>
+			<li>DefenceTech</li>
+			<li>ShipBasics</li>
+		    <li>GD_SpaceCraft</li>
+		</researchPrerequisites>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>RGBA(1.00,1.00,1.00,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+  </ThingDef>
+
+
+  <ThingDef>
+    <defName>GD_Cheetah_Leaving</defName>
+    <label>Cheetah(leaving)</label>
+    <category>Skyfaller</category>
+		<thingClass>OHUShips.ShipBase_Traveling</thingClass>
+		<tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>1.9</drawSize>
+    </graphicData>
+    <altitudeLayer>FlyingItem</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <selectable>false</selectable>
+  </ThingDef>  
+  
+</ThingDefs>
